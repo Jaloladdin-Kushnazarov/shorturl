@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active: prod
+
+  freemarker:
+    template-loader-path: classpath:/templates
+
+  mail:
+    host: 'sandbox.smtp.mailtrap.io'
+    port: 587
+    username: 3e2f5c03e74e6f
+    password: 726aa7a00fc3fe
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+telegram:
+  bot:
+    token: 7910391557:AAHkyvD4ZIOIJr1i88yzMRG6cMsvSOeIkaM
+    chat-id: 518471586
+
+logging:
+  level:
+    org.zalando.logbook: TRACE
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shorturl
+    username: postgres
+    password: Jkushnazarov25121998
+    driver-class-name: org.postgresql.Driver
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shorturl
+    username: postgres
+    password: Jkushnazarov25121998
+    driver-class-name: org.postgresql.Driver
