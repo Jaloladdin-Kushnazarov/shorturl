@@ -18,10 +18,12 @@ public class CustomUserDetails implements UserDetails {
 
     private final Long id;
     private final AuthUser authUser;
+    private String email;
 
     public CustomUserDetails(@Nonnull AuthUser authUser) {
         this.authUser = authUser;
         this.id = authUser.getId();
+        this.email = authUser.getEmail();
     }
 
     @Override
@@ -63,5 +65,9 @@ public class CustomUserDetails implements UserDetails {
 
     public Long getId() {
         return id;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import java.io.IOException;
-import java.util.Base64;
 import java.util.Map;
 
 @Component
@@ -25,27 +24,7 @@ public class MailSenderServise {
     private final static String EMAIL = "shorturl@info.com";
 
 
-    @Async
-    public void sendFreeMakerMail(String username) {
-//        try {
-//            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-//            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
-//            mimeMessageHelper.setFrom(username + "@gmail.com");
-//            mimeMessageHelper.setTo("to@gmail.com"  );
-//            mimeMessageHelper .setSubject("subject from Test simple mail");
-//
-//            Template template = configuration.getTemplate("activate_account.ftlh");
-//            String token = Base64.getEncoder().encodeToString(username.getBytes());
-//            Map<String, String> objectModel = Map.of("username", username,  "token", token);
-//            String htmlContent = FreeMarkerTemplateUtils.processTemplateIntoString(template, objectModel);
-//            mimeMessageHelper.setText(htmlContent, true); // true -> HTML format
-//
-//            javaMailSender.send(mimeMessage);
-//        } catch (MessagingException | IOException e) {
-//            e.printStackTrace();
-//        }  catch (TemplateException ignored) {
-//        }
-    }
+
 
     @Async
     public void sendActivationMail(Map<String, String> model) {
@@ -63,6 +42,27 @@ public class MailSenderServise {
             String url = "http://localhost:8080/api/auth/activate/" + model.get("code");
             Map<String, String> objectModel = Map.of("url", url);
             String htmlMailContent = FreeMarkerTemplateUtils.processTemplateIntoString(template, objectModel);
+            mimeMessageHelper.setText(htmlMailContent, true);
+            javaMailSender.send(mimeMessage);
+        } catch (MessagingException | IOException | TemplateException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Async
+    public   void sendWeeklyReport(Map<String, Object> model)    {
+        try {
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+            mimeMessageHelper.setFrom(EMAIL);
+            mimeMessageHelper.setTo(model.get("to").toString() );
+            mimeMessageHelper.setSubject("Weekly Report  ");
+
+            Template template = configuration.getTemplate("report.ftlh");
+
+            String url = "http://localhost:8080/api/auth/activate/" + model.get("code");
+            String htmlMailContent = FreeMarkerTemplateUtils.processTemplateIntoString(template, model );
             mimeMessageHelper.setText(htmlMailContent, true);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException | IOException | TemplateException e) {

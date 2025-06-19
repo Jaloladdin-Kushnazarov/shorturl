@@ -6,6 +6,8 @@ import org.example.shorturl.entities.AuthUserOtp;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.UUID;
 
@@ -13,6 +15,7 @@ import java.util.UUID;
 public class BaseUtil {
 
     private final Base64.Encoder encoder = Base64.getUrlEncoder();
+    private final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public String generateOtp(Long userId) {
         return   encoder.encodeToString((UUID.randomUUID().toString() + userId).getBytes());
@@ -25,4 +28,7 @@ public class BaseUtil {
     }
 
 
+    public String formatter(LocalDateTime localDateTime) {
+        return FORMATTER.format(localDateTime);
+    }
 }

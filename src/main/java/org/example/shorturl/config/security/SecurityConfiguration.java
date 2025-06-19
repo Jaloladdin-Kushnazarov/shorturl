@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.shorturl.dtos.response.AppErrorDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -64,6 +65,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(httpReqConf ->
                         httpReqConf.requestMatchers(WHITE_LIST)
                                 .permitAll()
+                                .requestMatchers(HttpMethod.GET, "/{code:[a-zA-Z0-9]+}").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 )

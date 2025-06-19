@@ -13,31 +13,25 @@ import java.util.Objects;
 @Component
 public class SessionUser {
 
-    public UserDetails user() {
+    public CustomUserDetails user() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             Object principal = authentication.getPrincipal();
-            if (principal instanceof UserDetails userDetails) {
-                return userDetails;
+            if (principal instanceof CustomUserDetails customUserDetails) {
+                return customUserDetails;
+            } else {
+                log.warn("Principal is not instance of CustomUserDetails, actual type: {}", principal.getClass());
             }
+        } else {
+            log.warn("Authentication not found or not authenticated.");
         }
 
         return null;
     }
 
     public Long id() {
-        UserDetails user = user();
-        if (Objects.isNull(user)) {
-            log.warn("User is not authenticated or not found in SecurityContext");
-            return -1L;
-        }
-
-        if (user instanceof CustomUserDetails customUserDetails) {
-            return customUserDetails.getId();
-        }
-
-        log.warn("Principal is not instance of CustomUserDetails");
-        return -1L;
+        CustomUserDetails user = user();
+        return user != null ? user.getId() : -1L;
     }
 }
 
