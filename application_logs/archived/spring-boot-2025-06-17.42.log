@@ -1,0 +1,59 @@
+2025-06-17 20:03:42 INFO  [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-06-17 20:03:42 TRACE [http-nio-8080-exec-2] org.zalando.logbook.Logbook - {"origin":"remote","type":"request","correlation":"8ee72cff562103ae","protocol":"HTTP/1.1","remote":"0:0:0:0:0:0:0:1","method":"GET","uri":"http://localhost:8080/c124695c","host":"localhost","path":"/c124695c","scheme":"http","port":"8080","headers":{"accept":["*/*"],"accept-encoding":["gzip, deflate, br"],"connection":["keep-alive"],"content-length":["45"],"content-type":["application/json"],"host":["localhost:8080"],"postman-token":["03b2b710-223c-4081-9d2b-e00c0cccd219"],"user-agent":["PostmanRuntime/7.44.0"]}}
+2025-06-17 20:03:42 TRACE [http-nio-8080-exec-2] org.zalando.logbook.Logbook - {"origin":"local","type":"response","correlation":"8ee72cff562103ae","duration":86,"protocol":"HTTP/1.1","status":401,"headers":{"Cache-Control":["no-cache, no-store, max-age=0, must-revalidate"],"Connection":["keep-alive"],"Content-Length":["195"],"Content-Type":["application/json"],"Date":["Tue, 17 Jun 2025 15:03:42 GMT"],"Expires":["0"],"Keep-Alive":["timeout=60"],"Pragma":["no-cache"],"X-Content-Type-Options":["nosniff"],"X-Frame-Options":["DENY"],"X-XSS-Protection":["0"]},"body":{"friendlyMessage":"Full authentication is required to access this resource","developerMessage":"Full authentication is required to access this resource","errorPath":"/c124695c","statusCode":401}}
+2025-06-17 20:04:04 TRACE [http-nio-8080-exec-3] org.zalando.logbook.Logbook - {"origin":"remote","type":"request","correlation":"d47074f6ba84cdb3","protocol":"HTTP/1.1","remote":"127.0.0.1","method":"GET","uri":"http://localhost:8080/g7/c124695c","host":"localhost","path":"/g7/c124695c","scheme":"http","port":"8080","headers":{"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.5"],"connection":["keep-alive"],"cookie":["Idea-43b05894=db9fa3c3-67b5-40eb-a684-f86c2464bc13"],"host":["localhost:8080"],"priority":["u=0, i"],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["none"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"user-agent":["Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:139.0) Gecko/20100101 Firefox/139.0"]}}
+2025-06-17 20:04:21 ERROR [http-nio-8080-exec-3] o.e.s.c.h.GlobalExceptionHandler - Server Error : friendlyMessage: Internal Server Error
+statusCode: 500
+errorPath: /g7/c124695c
+developerMessage: `Cannot invoke "org.example.shorturl.entities.Url.getUrl()" because "url" is null`
+
+2025-06-17 20:04:21 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 20:04:22 TRACE [http-nio-8080-exec-3] org.zalando.logbook.Logbook - {"origin":"local","type":"response","correlation":"d47074f6ba84cdb3","duration":17688,"protocol":"HTTP/1.1","status":500,"headers":{"Cache-Control":["no-cache, no-store, max-age=0, must-revalidate"],"Connection":["close"],"Content-Type":["application/json"],"Date":["Tue, 17 Jun 2025 15:04:22 GMT"],"Expires":["0"],"Pragma":["no-cache"],"Transfer-Encoding":["chunked"],"Vary":["Origin","Access-Control-Request-Method","Access-Control-Request-Headers"],"X-Content-Type-Options":["nosniff"],"X-Frame-Options":["DENY"],"X-XSS-Protection":["0"]},"body":{"friendlyMessage":"Internal Server Error","developerMessage":"Cannot invoke \"org.example.shorturl.entities.Url.getUrl()\" because \"url\" is null","errorPath":"/g7/c124695c","statusCode":500}}
+2025-06-17 20:04:22 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 20:04:22 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 20:04:22 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 20:04:22 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 20:04:25 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 20:04:25 INFO  [main] o.e.shorturl.ShortUrlApplication - Starting ShortUrlApplication using Java 23.0.1 with PID 2693 (/Users/macbookpro/IdeaProjects/shortURL/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/shortURL)
+2025-06-17 20:04:25 INFO  [main] o.e.shorturl.ShortUrlApplication - The following 1 profile is active: "prod"
+2025-06-17 20:04:25 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 20:04:26 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 3 JPA repository interfaces.
+2025-06-17 20:04:26 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 20:04:26 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 20:04:26 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 20:04:26 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 20:04:26 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 20:04:26 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 816 ms
+2025-06-17 20:04:26 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 20:04:26 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 20:04:26 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 20:04:26 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 20:04:26 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 20:04:26 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@8e00c02
+2025-06-17 20:04:26 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 20:04:26 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 20:04:27 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 20:04:27 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 20:04:27 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 20:04:28 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 20:04:28 INFO  [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-06-17 20:04:28 WARN  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-06-17 20:04:28 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 20:04:28 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 20:04:28 INFO  [main] o.e.shorturl.ShortUrlApplication - Started ShortUrlApplication in 3.557 seconds (process running for 3.848)
+2025-06-17 20:04:30 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 20:04:30 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 20:04:30 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-06-17 20:04:30 TRACE [http-nio-8080-exec-1] org.zalando.logbook.Logbook - {"origin":"remote","type":"request","correlation":"cf5c4daa712a942c","protocol":"HTTP/1.1","remote":"127.0.0.1","method":"GET","uri":"http://localhost:8080/g7/c124695c","host":"localhost","path":"/g7/c124695c","scheme":"http","port":"8080","headers":{"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.5"],"connection":["keep-alive"],"cookie":["Idea-43b05894=db9fa3c3-67b5-40eb-a684-f86c2464bc13"],"host":["localhost:8080"],"priority":["u=0, i"],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["none"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"user-agent":["Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:139.0) Gecko/20100101 Firefox/139.0"]}}
+2025-06-17 20:04:31 ERROR [http-nio-8080-exec-1] o.e.s.c.h.GlobalExceptionHandler - Server Error : friendlyMessage: Internal Server Error
+statusCode: 500
+errorPath: /g7/c124695c
+developerMessage: `Cannot invoke "org.example.shorturl.entities.Url.getUrl()" because "url" is null`
+

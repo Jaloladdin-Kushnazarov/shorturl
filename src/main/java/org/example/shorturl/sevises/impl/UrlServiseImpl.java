@@ -2,7 +2,6 @@ package org.example.shorturl.sevises.impl;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.example.shorturl.config.security.CustomUserDetails;
 import org.example.shorturl.config.security.SessionUser;
 import org.example.shorturl.dtos.UrlCreateDto;
 import org.example.shorturl.dtos.url.DailyReport;
@@ -18,7 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.userdetails.UserDetails;
+import org..security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
