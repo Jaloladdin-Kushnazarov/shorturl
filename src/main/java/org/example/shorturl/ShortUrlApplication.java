@@ -10,6 +10,7 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.Optional;
 
@@ -34,6 +35,11 @@ public class ShortUrlApplication {
     public AuditorAware<Long> getAuditor(SessionUser sessionUser) {
         return () -> Optional.of(sessionUser.id());
     }
+
+    @Scheduled(cron = "0 0 9 * * MON")
+    public void sendWeaklyReportOnMonday(){
+        urlServise.sendWeaklyReport();
+}
 
 
 }

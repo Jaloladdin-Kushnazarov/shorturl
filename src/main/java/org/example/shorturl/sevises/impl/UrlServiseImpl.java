@@ -53,7 +53,6 @@ public class UrlServiseImpl implements UrlServise {
     }
 
 
-
     @Override
     public Url getByCode(@NonNull String code) {
         Url url = urlRepository.findByCode(code)
@@ -91,49 +90,16 @@ public class UrlServiseImpl implements UrlServise {
                     dailyReports.add(new DailyReport(dayNumber, urlsReports));
                     count.addAndGet(urlsReports.size());
                 });
-        WeeklyReport weeklyReport = new WeeklyReport(
+        return new WeeklyReport(
                 baseUtil.formatter(from),
                 baseUtil.formatter(to),
                 dailyReports,
                 count.get());
-
-        String email = sessionUser.user().getEmail();
-        Map<String, Object> model = new HashMap<>();
-        model.put("to", email);
-        model.put("username", sessionUser.user().getUsername());
-        model.put("from", weeklyReport.getFrom());
-        model.put("to", weeklyReport.getTo());
-        model.put("count", weeklyReport.getCount());
-        model.put("dailyReports", weeklyReport.getDailyReports());
-        mailSenderServise.sendWeeklyReport(model);
-        return weeklyReport;
     }
 
     @Override
     public void sendWeaklyReport() {
-        LocalDate today = LocalDate.now();
-        LocalDate lastMonday = today.minusWeeks(1).with(DayOfWeek.MONDAY);
-        LocalDate lastSunday = today.minusWeeks(1).with(DayOfWeek.SUNDAY);
-
-        LocalDateTime from = lastMonday.atStartOfDay();              // 00:00
-        LocalDateTime to = lastSunday.atTime(LocalTime.MAX);         // 23:59:59.999999999
-
-        AtomicInteger count = new AtomicInteger(0);
-
-        List<Url> urls = urlRepository.findAllByUSer(sessionUser.id(), from, to);
-        List<DailyReport> dailyReports = new ArrayList<>();
-        urls.stream()
-                .map(UrlReport::new)
-                .collect(Collectors.groupingBy(urelReport -> urelReport.getDayOfWeek().getValue()))
-                .forEach((dayNumber, urlsReports) -> {
-                    dailyReports.add(new DailyReport(dayNumber, urlsReports));
-                    count.addAndGet(urlsReports.size());
-                });
-        WeeklyReport weeklyReport = new WeeklyReport(
-                baseUtil.formatter(from),
-                baseUtil.formatter(to),
-                dailyReports,
-                count.get());
+        WeeklyReport weeklyReport = getWeeklyReport();
 
         String email = sessionUser.user().getEmail();
         Map<String, Object> model = new HashMap<>();
