@@ -17,7 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org..security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
@@ -90,6 +89,7 @@ public class UrlServiseImpl implements UrlServise {
                     dailyReports.add(new DailyReport(dayNumber, urlsReports));
                     count.addAndGet(urlsReports.size());
                 });
+
         return new WeeklyReport(
                 baseUtil.formatter(from),
                 baseUtil.formatter(to),

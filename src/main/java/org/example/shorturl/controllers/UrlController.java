@@ -51,9 +51,11 @@ public class UrlController {
 
 
 
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/api/url/report")
-    public WeeklyReport getWeeklyReport() throws IOException {
-      return urlServise.getWeeklyReport();
-    }
+
+        //bu pathni o'chirib qo'yishdan maqsad dastur har hafta Dushanba ertalab 9: 00  ga avto report jo'natadi
+//    @PreAuthorize("isAuthenticated()")
+//    @GetMapping("/api/url/report")
+//    public WeeklyReport getWeeklyReport() throws IOException {
+//      return urlServise.getWeeklyReport();
+//    }
 }
